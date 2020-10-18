@@ -25,6 +25,7 @@ const HexaColor = () => {
     borderRadius: '5px',
     width: '75%',
     border: '2px solid black',
+    backgroundColor: bgColor,
   }
   return (
     <div style={styles}>
@@ -33,33 +34,61 @@ const HexaColor = () => {
   )
 }
 
+const welcome = 'Welcome to 30 Days Of React'
+const title = 'Getting Started React'
+const subtitle = 'JavaScript Library'
+const author = {
+  firstName: 'Asabeneh',
+  lastName: 'Yetayeh'
+}
+const date = 'Oct 3, 2020'
+
 // Header Component
 const Header = () => (
   <header>
     <div className='header-wrapper'>
-      <h1>Welcome to 30 Days Of React</h1>
-      <h2>Getting Started React</h2>
-      <h3>JavaScript Library</h3>
-      <p>Asabeneh Yetayeh</p>
-      <small>Oct 3, 2020</small>
+      <h1>{welcome}</h1>
+      <h2>{title}</h2>
+      <h3>{subtitle}</h3>
+      <p>
+        Instructor: {author.firstName} {author.lastName}
+      </p>
+      <small>Date: {date}</small>
     </div>
   </header>
+)
+
+const yearBorn = 1820
+const currentYear = 2020
+const age = currentYear - yearBorn
+const personAge = (
+  <p>
+    {' '}
+    {author.firstName} {author.lastName} is {age} years old
+  </p>
 )
 
 // User Card Component
 const UserCard = () => (
   <div className='user-card'>
     <img src={asabenehImage} alt='asabeneh image' />
-    <h2>Asabeneh Yetayeh</h2>
+    <h2>
+    {author.firstName} {author.lastName}
+    </h2>
   </div>
 )
 
+// JSX element, main
+const techs = ['HTML', 'CSS', 'JavaScript']
+const techsFormatted = techs.map((tech) => <li key={tech}>{tech}</li>)
+
 // TechList Component
-const TechList = () => {
-  const techs = ['HTML', 'CSS', 'JavaScript']
-  const techsFormatted = techs.map((tech) => <li key={tech}>{tech}</li>)
-  return techsFormatted
-}
+// const TechList = () => {
+//   const techs = ['HTML', 'CSS', 'JavaScript']
+//   const techsFormatted = techs.map((tech) => <li key={tech}>{tech}</li>)
+//   return techsFormatted
+// }
+
 const buttonStyles = {
   padding: '10px 20px',
   background: 'rgb(0, 255, 0)',
@@ -73,10 +102,16 @@ const Button = () => <button style={buttonStyles}> action </button>
 const Main = () => (
   <main>
     <div className='main-wrapper'>
-      <p>Prerequisite to get started react.js:</p>
-      <ul>
-        <TechList />
-      </ul>
+      <div>
+        <p>Prerequisite to get started{' '}
+          <strong>
+            <em>react.js</em>
+          </strong>
+          :
+        </p>
+        <ul>{techsFormatted}</ul>
+        {personAge}
+      </div>
       <UserCard />
       <div>
         {/* Generate two different hexa colors every time */}
@@ -87,20 +122,41 @@ const Main = () => (
   </main>
 )
 
+const copyRight = '2020'
+
 // Footer Component
 const Footer = () => (
   <footer>
     <div className='footer-wrapper'>
-      <p>Copyright 2020</p>
+      <p>Copyright &copy;{copyRight}</p>
     </div>
   </footer>
 )
+
+// exercise 
+
+const FormDesign = () => (
+  <main>
+    <div className='form-wrapper'>
+      <h1>SUBSCRIBE</h1>
+      <p>Sign up with your email address to recieve news and upates.</p>
+      <div>
+        <input type="text" id="firstname" placeholder="First name" />
+        <input type="text" id="lastname" placeholder="Last name" />
+        <input type="text" id="email" placeholder="email" />
+      </div>
+      <div>
+        <input type='button' id="subscribeBtn" value="Subscribe" />
+      </div>
+    </div>
+  </main>
+);
 
 // The App, or the parent or the container component
 const App = () => (
   <div className='app'>
     <Header />
-    <Main />
+    <HexaColor />
     <Footer />
   </div>
 )
