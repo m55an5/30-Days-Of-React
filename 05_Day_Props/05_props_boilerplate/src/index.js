@@ -2,6 +2,17 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import asabenehImage from './images/asabeneh.jpg'
 
+
+const hexaColor = () => {
+  let str = '0123456789abcdef'
+  let color = ''
+  for (let i = 0; i < 6; i++) {
+    let index = Math.floor(Math.random() * str.length)
+    color += str[index]
+  }
+  return '#' + color
+}
+
 // Fuction to show month date year
 
 const showDate = (time) => {
@@ -53,7 +64,18 @@ const Header = ({
 
 // TechList Component
 const TechList = ({ techs }) => {
-  const techList = techs.map((tech) => <li key={tech}>{tech}</li>)
+  
+  const techList = techs.map((tech) => {
+    const labelStyles = {
+      backgroundColor: hexaColor(),
+      borderRadius: 10,
+      padding: 10,
+      margin: 3
+    }
+    labelStyles.backgroundColor = hexaColor()
+    console.log(labelStyles)
+    return <label style={labelStyles} key={tech} >{tech} {hexaColor()}</label> 
+  })
   return techList
 }
 
@@ -91,10 +113,10 @@ const buttonStyles = {
 const Main = ({ user, techs, greetPeople, handleTime }) => (
   <main>
     <div className='main-wrapper'>
-      <p>Prerequisite to get started react.js:</p>
-      <ul>
+      <h3>Skills:</h3>
+      <div>
         <TechList techs={techs} />
-      </ul>
+      </div>
       <UserCard user={user} />
       <Button text='Greet People' onClick={greetPeople} style={buttonStyles} />
       <Button text='Show Time' onClick={handleTime} style={buttonStyles} />
