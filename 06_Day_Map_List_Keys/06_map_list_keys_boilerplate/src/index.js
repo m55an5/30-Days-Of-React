@@ -18,8 +18,8 @@ const countries = [
 // Country component
 const Country = ({ country: { name, city } }) => {
   return (
-    <div>
-      <h1>{name}</h1>
+    <div className="sqaure-wrapper">
+      <p>{name}</p>
       <small>{city}</small>
     </div>
   )
@@ -37,7 +37,7 @@ const Countries = ({ countries }) => {
 // Functional Component
 const App = () => {
   return (
-    <div className='app'>
+    <div className='main-wrapper'>
       <div>
         <h1>Countries List</h1>
         <Countries countries={countries} />
